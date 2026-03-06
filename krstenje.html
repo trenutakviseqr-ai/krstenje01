@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Krštenje Gabriela</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f9f7f2;
+color:#444;
+text-align:center;
+overflow-x:hidden;
+}
+
+h1,h2{
+font-family:'Playfair Display',serif;
+}
+
+section{
+padding:80px 20px;
+}
+
+/* INTRO ANIMACIJA */
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#f5f1e8,#e8eff7);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-family:'Playfair Display',serif;
+font-size:2.2em;
+color:#bfa46f;
+z-index:2000;
+animation:fade 4s forwards;
+}
+
+@keyframes fade{
+0%{opacity:1}
+70%{opacity:1}
+100%{opacity:0;visibility:hidden}
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(255,255,255,0.75),rgba(255,255,255,0.85)),
+url(hero.jpeg);
+background-size:cover;
+background-position:center;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.hero h1{
+font-size:3.2em;
+color:#bfa46f;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:1.2em;
+}
+
+.cta{
+margin-top:40px;
+padding:16px 36px;
+border-radius:40px;
+border:none;
+background:linear-gradient(135deg,#d4b87c,#bfa46f);
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.cta:hover{
+transform:scale(1.05);
+}
+
+/* PORUKA */
+
+.message{
+max-width:700px;
+margin:auto;
+font-size:1.2em;
+line-height:1.9em;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:40px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* GALERIJA */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+max-width:1000px;
+margin:auto;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:80%;
+border-radius:10px;
+}
+
+/* ZAVRŠNA PORUKA */
+
+.closing{
+font-size:1.6em;
+font-family:'Playfair Display',serif;
+color:#bfa46f;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+✨ Dobrodošli na krštenje Gabriela
+</div>
+
+<audio id="music" loop>
+<source src="lullaby.mp3" type="audio/mpeg">
+</audio>
+
+<section class="hero">
+
+<h1>Dobrodošli na moj poseban dan</h1>
+
+<p><strong>Gabriel Golubić</strong></p>
+
+<p>3.6.2023<br>Jastrebarsko</p>
+
+<button class="cta" onclick="startExperience()">
+Pogledaj uspomene
+</button>
+
+</section>
+
+<section>
+
+<div class="message">
+
+Dragi naši,<br><br>
+
+hvala vam što ste danas bili dio mog krštenja.<br>
+Vaša ljubav, zagrljaji i osmijesi učinili su ovaj dan još posebnijim.<br><br>
+
+Jednog dana, kada pogledam ove slike, znat ću da sam od samog početka bio okružen divnim ljudima. 🤍
+
+</div>
+
+</section>
+
+<section id="gallery">
+
+<div class="gallery">
+
+<img src="photos/01.jpg">
+<img src="photos/02.jpg">
+<img src="photos/03.jpg">
+<img src="photos/04.jpg">
+<img src="photos/05.jpg">
+<img src="photos/06.jpg">
+<img src="photos/07.jpg">
+<img src="photos/08.jpg">
+<img src="photos/09.jpg">
+<img src="photos/10.jpg">
+<img src="photos/11.jpg">
+
+</div>
+
+<div class="closing">
+
+Hvala što ste dio moje priče.<br><br>
+
+Gabriel 🤍
+
+</div>
+
+</section>
+
+<div id="lightbox" onclick="closeLightbox()">
+<img id="lightbox-img">
+</div>
+
+<script>
+
+function startExperience(){
+
+document.getElementById("music").play();
+
+document.getElementById("gallery").scrollIntoView({
+behavior:"smooth"
+})
+
+}
+
+const images=document.querySelectorAll(".gallery img")
+const lightbox=document.getElementById("lightbox")
+const lightboxImg=document.getElementById("lightbox-img")
+
+images.forEach(img=>{
+img.addEventListener("click",()=>{
+lightbox.style.display="flex"
+lightboxImg.src=img.src
+})
+})
+
+function closeLightbox(){
+lightbox.style.display="none"
+}
+
+</script>
+
+</body>
+</html>

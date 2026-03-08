@@ -3,7 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Krštenje Gabriela</title>
 
@@ -30,10 +30,10 @@ font-family:'Playfair Display',serif;
 }
 
 section{
-padding:80px 20px;
+padding:60px 20px;
 }
 
-/* INTRO ANIMACIJA */
+/* INTRO */
 
 #intro{
 position:fixed;
@@ -47,10 +47,12 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 font-family:'Playfair Display',serif;
-font-size:2.2em;
+font-size:clamp(26px,5vw,38px);
 color:#bfa46f;
 z-index:2000;
 animation:fade 4s forwards;
+padding:20px;
+text-align:center;
 }
 
 @keyframes fade{
@@ -62,10 +64,12 @@ animation:fade 4s forwards;
 /* HERO */
 
 .hero{
-height:100vh;
+min-height:100svh;
+
 background:
 linear-gradient(rgba(255,255,255,0.75),rgba(255,255,255,0.85)),
 url(hero.jpeg);
+
 background-size:cover;
 background-position:center;
 
@@ -73,16 +77,18 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+
+padding:40px 20px;
 }
 
 .hero h1{
-font-size:3.2em;
+font-size:clamp(30px,7vw,52px);
 color:#bfa46f;
 margin-bottom:10px;
 }
 
 .hero p{
-font-size:1.2em;
+font-size:clamp(16px,4vw,20px);
 }
 
 .cta{
@@ -101,25 +107,25 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* PORUKA */
+/* MESSAGE */
 
 .message{
 max-width:700px;
 margin:auto;
-font-size:1.2em;
+font-size:clamp(16px,4vw,20px);
 line-height:1.9em;
 background:rgba(255,255,255,0.7);
 backdrop-filter:blur(10px);
 border-radius:20px;
-padding:40px;
+padding:40px 25px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* GALERIJA */
+/* GALLERY */
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 gap:15px;
 max-width:1000px;
 margin:auto;
@@ -150,21 +156,42 @@ display:none;
 align-items:center;
 justify-content:center;
 z-index:1000;
+padding:20px;
 }
 
 #lightbox img{
-max-width:90%;
-max-height:80%;
+max-width:95%;
+max-height:85%;
 border-radius:10px;
 }
 
-/* ZAVRŠNA PORUKA */
+/* CLOSING */
 
 .closing{
-font-size:1.6em;
+font-size:clamp(22px,5vw,30px);
 font-family:'Playfair Display',serif;
 color:#bfa46f;
 margin-top:40px;
+padding:0 20px;
+}
+
+/* MOBILE */
+
+@media (max-width:600px){
+
+section{
+padding:50px 15px;
+}
+
+.hero{
+padding-top:80px;
+}
+
+.cta{
+width:90%;
+max-width:300px;
+}
+
 }
 
 </style>
@@ -230,7 +257,6 @@ Jednog dana, kada pogledam ove slike, znat ću da sam od samog početka bio okru
 <div class="closing">
 
 Hvala što ste dio moje priče.<br><br>
-
 Gabriel 🤍
 
 </div>
